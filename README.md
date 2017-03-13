@@ -1,5 +1,7 @@
 # tilelive-postgis
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/stepankuzmin/tilelive-postgis.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/stepankuzmin/tilelive-postgis.svg?branch=master)](https://travis-ci.org/stepankuzmin/tilelive-postgis)
 
 Implements the tilelive API for generating mapnik vector tiles from PostGIS.
