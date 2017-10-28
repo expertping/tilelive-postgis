@@ -9,10 +9,9 @@ const parse = (uri) => {
   const { dir, base } = path.parse(params.pathname);
 
   const dbname = base;
-  let port = params.port;
-  let host = params.hostname;
-  if (!host && dir !== '/') {
-    [host, port] = dir.split(':');
+  let { port, hostname } = params;
+  if (!hostname && dir !== '/') {
+    [hostname, port] = dir.split(':');
     port = parseInt(port, 10);
   }
 
@@ -24,16 +23,17 @@ const parse = (uri) => {
   }
 
   const { table, query } = params.query;
+  const layerName = params.query.layerName || table;
 
   const defaultOptions = {
     type: 'postgis',
-    host,
+    host: hostname,
     port: port || 5432,
     dbname,
     user,
     password,
-    tableName: table,
-    table: query || table
+    table: query || table,
+    layerName
   };
 
   return Object.assign({}, params.query, defaultOptions);

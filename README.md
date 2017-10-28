@@ -1,5 +1,7 @@
 # tilelive-postgis
 
+[![npm version](https://img.shields.io/npm/v/tilelive-postgis.svg)](https://www.npmjs.com/package/tilelive-postgis)
+[![npm downloads](https://img.shields.io/npm/dt/tilelive-postgis.svg)](https://www.npmjs.com/package/tilelive-postgis)
 [![Build Status](https://travis-ci.org/stepankuzmin/tilelive-postgis.svg?branch=master)](https://travis-ci.org/stepankuzmin/tilelive-postgis)
 
 Implements the tilelive API for generating mapnik vector tiles from PostGIS.
@@ -13,7 +15,7 @@ npm install tilelive-postgis
 ## Usage
 
 ```js
-const tilelive = require('tilelive');
+const tilelive = require('@mapbox/tilelive');
 require('tilelive-postgis').registerProtocols(tilelive);
 
 const uri = 'postgis://user:password@localhost:5432/test?table=test_table&geometry_field=geometry&srid=4326';
@@ -44,6 +46,13 @@ tilelive.load(uri, (error, source) => { ... });
 ```
 
 ## Parameters
+
+The only parameter that is not mapnik specific is:
+
+| *parameter*       | *value*  | *description* | *default* |
+|:------------------|----------|---------------|----------:|
+| layerName         | string   | name of the layer in resulting tiles. | defaults to the table name for backwards compatibility.|
+
 
 Actual list of parameters you can see [here](https://github.com/mapnik/mapnik/wiki/PostGIS).
 
